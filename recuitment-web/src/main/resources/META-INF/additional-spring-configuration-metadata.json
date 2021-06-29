@@ -4,5 +4,10 @@
       "name": "mybatis-plus",
       "type": "java.lang.String",
       "description": "Description for mybatis-plus."
-  }
-] }
+    },
+    {
+      "name": "spring.datasource.url.jdbc:mysql://localhost:3306/recruitment_web?serverTimezone",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.url.jdbc:mysql://localhost:3306/recruitment_web?serverTimezone."
+    }
+  ] }

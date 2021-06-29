@@ -1,7 +1,11 @@
 package com.gdpu.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.gdpu.model.Resume;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -17,4 +21,5 @@ public interface ResumeService extends IService<Resume> {
      */
     public Resume selectByUid(Integer id);
 
+    IPage<Resume> PageSearch(Page<Resume> page, Map<String, String> condition, String keyword);
 }

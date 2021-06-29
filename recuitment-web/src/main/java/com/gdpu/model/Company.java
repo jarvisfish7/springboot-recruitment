@@ -63,5 +63,10 @@ public class Company implements Serializable {
      */
     private String address;
 
+    /**
+     * 图片地址
+     */
+    private String avatar;
+
 
 }

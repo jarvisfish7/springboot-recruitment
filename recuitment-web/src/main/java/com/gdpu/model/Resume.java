@@ -109,5 +109,10 @@ public class Resume implements Serializable {
      */
     private String assessment;
 
+    /**
+     * 图片地址
+     */
+    private String avatar;
+
 
 }

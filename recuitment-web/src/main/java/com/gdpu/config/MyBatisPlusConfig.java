@@ -30,4 +30,5 @@ public class MyBatisPlusConfig {
         interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.H2));
         return interceptor;
     }
+
 }

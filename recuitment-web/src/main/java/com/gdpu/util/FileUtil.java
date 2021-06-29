@@ -37,14 +37,44 @@ public class FileUtil {
 
     public String uploadImage(MultipartFile image) {
         String path = ClassUtils.getDefaultClassLoader().getResource("static/img/").getPath();
+        System.out.println("第一个目录是:"+path);
         String name = uploadFile(path, image);
-        return name == null ? null : "/img/" + name;
+        System.out.println(name);
+
+        return name;
     }
 
     public void deleteImage(String src) {
+        if (src==""){
+            return;
+        }
         String path = ClassUtils.getDefaultClassLoader().getResource("static/img/").getPath();
-        String name = src.replace("/img/", "");
-        deleteFile(path + name);
+//        String name = src.replace("/img/", "");
+
+        deleteFile(path + src);
+        System.out.println(path + src+"被删除！");
     }
+
+    /**
+     * 返回static拼接文件目录
+     * @param uri
+     * @return
+     */
+    public String  getAbsolute(String uri){
+        String path = ClassUtils.getDefaultClassLoader().getResource("static").getPath();
+        return path+uri;
+    }
+
+    /**
+     * 返回img目录绝对目录
+     */
+    public String getImg(){
+        String path = ClassUtils.getDefaultClassLoader().getResource("static/img/").getPath();
+        StringBuffer sb = new StringBuffer(path);
+        sb.deleteCharAt(0);
+        sb.insert(0,"file:");
+        return sb.toString();
+    }
+
 
 }

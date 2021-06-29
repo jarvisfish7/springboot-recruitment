@@ -53,6 +53,7 @@ public class CompanyUserController {
         QueryWrapper<CompanyUser> wrapper = new QueryWrapper<>();
         wrapper.eq("`username`",data.get("username"));
         wrapper.eq("`password`",data.get("password"));
+        System.out.println(companyUserMapper.selectCount(wrapper));
         if (companyUserMapper.selectCount(wrapper)>=1){
             CompanyUser user = companyUserMapper.selectOne(wrapper);
             Integer userid = user.getId();

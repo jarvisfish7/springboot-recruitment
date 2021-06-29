@@ -9,6 +9,36 @@ import java.util.Map;
 @Component
 public class ResultUtil {
 
+    public Map<String, Object> failureResult() {
+        return new HashMap(){{
+            put("status", 500);
+        }};
+    }
+
+    public Map<String, Object> failureResult(Object data) {
+        return new HashMap(){{
+            put("status", 500);
+            put("data", data);
+        }};
+    }
+
+    /**
+     * 成功
+     * @return
+     */
+    public Map<String, Object> successResult() {
+        return new HashMap(){{
+            put("status", 200);
+        }};
+    }
+
+    public Map<String, Object> successResult(Object data) {
+        return new HashMap(){{
+            put("status", 200);
+            put("data", data);
+        }};
+    }
+
     public Map<String, Object> successResult(String message) {
         return new HashMap(){{
             put("status", 200);
@@ -70,6 +100,14 @@ public class ResultUtil {
             put("username",username);
             put("userid",id);
             put("companyid",companyid);
+        }};
+    }
+
+    public Map<String, Object> urlResult(Integer status, String message,String url) {
+        return new HashMap(){{
+            put("status", status);
+            put("message", message);
+            put("url",url);
         }};
     }
 
