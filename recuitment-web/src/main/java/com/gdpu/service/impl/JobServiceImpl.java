@@ -38,7 +38,7 @@ public class JobServiceImpl extends ServiceImpl<JobMapper, Job> implements JobSe
         for (String key : condition.keySet()) {
             value = condition.get(key);
             if (stringUtil.isNotEmpty(value)){
-                if (!(value.equals("全国")) && !(value.equals("不限")))
+                if (!(value.equals("全国市")) && !(value.equals("不限")))
                     wrapper.eq(key,condition.get(key));
             }
         }
