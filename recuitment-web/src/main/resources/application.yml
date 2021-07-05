@@ -1,0 +1,59 @@
+#端口号
+server:
+  port: 8181
+
+#spring配置
+
+spring:
+  #mysql配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/recruitment_web?serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+
+    #设置redis配置信息
+  redis:
+    host: 120.78.196.78
+    port: 6379
+    password: 123456
+    database: 3
+    pool:
+      # 连接池中的最大空闲连接
+      max-idle: 1000
+      min-idle: 0
+
+      max-active: -1
+      max-wait: 2000
+    # 连接超时时间（毫秒）
+    timeout: 5000
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: GMT+8
+
+#  jackson:
+#    #字符串时间，用这行表示
+#    #    pattern="yyyy-MM-dd HH:mm:ss"
+#    date-format: yyyy-MM-dd
+#    #设置为东八区时间
+#    timezone: GMT+8
+#    serialization:
+#    #使用数值timestamp表示日期
+#    #想要值为2019-01-01
+#    write-dates-as-timestamps: false
+
+#mybatis-plus的配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      #配置逻辑删除
+      logic-delete-field: deleted
+      #删除
+      logic-delete-value: 1
+      #没删除
+      logic-not-delete-value: 0
+
+
+
