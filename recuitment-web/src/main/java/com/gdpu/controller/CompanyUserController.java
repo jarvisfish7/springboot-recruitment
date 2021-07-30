@@ -2,8 +2,10 @@ package com.gdpu.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.gdpu.mapper.CompanyUserMapper;
 import com.gdpu.model.CompanyUser;
+import com.gdpu.model.User;
 import com.gdpu.service.CompanyService;
 import com.gdpu.util.RedisUtil;
 import com.gdpu.util.ResultUtil;
@@ -99,6 +101,22 @@ public class CompanyUserController {
         }else {
             return resultUtil.customResult(200,"用户还没存在");
         }
+    }
+
+    /**
+     * 更改密码
+     */
+    @PostMapping("/changepass")
+    public Map<String, Object> changepass (@RequestBody Map<String, String> data){
+        CompanyUser user = new CompanyUser();
+        user.setPassword(data.get("newpass"));
+        UpdateWrapper wrapper = new UpdateWrapper();
+        wrapper.eq("username",data.get("username"));
+        int rows = companyUserMapper.update(user,wrapper);
+        if (rows>0){
+            return  resultUtil.successResult();
+        }
+        return resultUtil.failureResult();
     }
 }
 

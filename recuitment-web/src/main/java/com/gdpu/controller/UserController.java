@@ -2,6 +2,7 @@ package com.gdpu.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.gdpu.mapper.ResumeMapper;
 import com.gdpu.mapper.UserMapper;
 import com.gdpu.model.Resume;
@@ -122,6 +123,22 @@ public class UserController {
         wrapper.eq("user_id",id);
         Resume resume = resumeMapper.selectOne(wrapper);
         return resultUtil.customResult(200,"用户查找成功",resume);
+    }
+
+    /**
+     * 更改密码
+     */
+    @PostMapping("/changepass")
+    public Map<String, Object> changepass (@RequestBody Map<String, String> data){
+        User user = new User();
+        user.setPassword(data.get("newpass"));
+        UpdateWrapper wrapper = new UpdateWrapper();
+        wrapper.eq("username",data.get("username"));
+        int rows = userMapper.update(user,wrapper);
+        if (rows>0){
+            return  resultUtil.successResult();
+        }
+        return resultUtil.failureResult();
     }
 }
 

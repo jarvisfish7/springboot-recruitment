@@ -113,8 +113,8 @@ public class DeliverController {
     @PostMapping("/isExist")
     public Map<String, Object> isExist(@RequestBody Map<String,Integer> map){
         QueryWrapper<Deliver> wrapper = new QueryWrapper<>();
+        wrapper.eq("apply_id",map.get("applyId"));
         wrapper.eq("job_id",map.get("jobId"));
-        wrapper.eq("apply _id",map.get("applyId"));
         if (deliverMapper.selectCount(wrapper)>0){
             return resultUtil.successResult(true);
         }else {
